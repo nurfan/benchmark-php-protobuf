@@ -23,7 +23,7 @@ function dumpMap($name)
     $start = microtime(true);
     $message = $reply->serializeToJsonString();
     $end = microtime(true);
-    $exe_time = $end - $start ; // convert to milisecond
+    $exe_time = ($end - $start) * 1000; // convert to milisecond
 
     return $message."- time execution : ". $exe_time;
 }
