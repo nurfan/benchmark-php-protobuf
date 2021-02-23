@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package benchmark;
+
+service Dummy{
+    rpc GetMap (MapRequest) returns (MapResponse);
+}
+
+message MapRequest {
+    string name = 1;
+}
+
+message MapResponse {
+    repeated string destination_addresses = 1;
+    repeated string origin_addresses = 2;
+    string status = 4;
+    repeated Elements  elements = 5;
+}
+
+message Distance {
+    string text = 1;
+    uint32 value = 2;
+}
+
+message Duration {
+    string text = 1;
+    uint32 value = 2;
+}
+
+message Elements {
+    Distance distance = 1;
+    Duration duration = 2;
+    string status = 3;
+}
