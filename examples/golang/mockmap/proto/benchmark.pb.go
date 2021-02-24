@@ -7,6 +7,7 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	any "github.com/golang/protobuf/ptypes/any"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -275,37 +276,1827 @@ func (m *Elements) GetStatus() string {
 	return ""
 }
 
+type StreamPostRequest struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StreamPostRequest) Reset()         { *m = StreamPostRequest{} }
+func (m *StreamPostRequest) String() string { return proto.CompactTextString(m) }
+func (*StreamPostRequest) ProtoMessage()    {}
+func (*StreamPostRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{5}
+}
+
+func (m *StreamPostRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamPostRequest.Unmarshal(m, b)
+}
+func (m *StreamPostRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamPostRequest.Marshal(b, m, deterministic)
+}
+func (m *StreamPostRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamPostRequest.Merge(m, src)
+}
+func (m *StreamPostRequest) XXX_Size() int {
+	return xxx_messageInfo_StreamPostRequest.Size(m)
+}
+func (m *StreamPostRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamPostRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StreamPostRequest proto.InternalMessageInfo
+
+func (m *StreamPostRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type StreamPostResponse struct {
+	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Data                 []*Data  `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StreamPostResponse) Reset()         { *m = StreamPostResponse{} }
+func (m *StreamPostResponse) String() string { return proto.CompactTextString(m) }
+func (*StreamPostResponse) ProtoMessage()    {}
+func (*StreamPostResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{6}
+}
+
+func (m *StreamPostResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamPostResponse.Unmarshal(m, b)
+}
+func (m *StreamPostResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamPostResponse.Marshal(b, m, deterministic)
+}
+func (m *StreamPostResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamPostResponse.Merge(m, src)
+}
+func (m *StreamPostResponse) XXX_Size() int {
+	return xxx_messageInfo_StreamPostResponse.Size(m)
+}
+func (m *StreamPostResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamPostResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StreamPostResponse proto.InternalMessageInfo
+
+func (m *StreamPostResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+func (m *StreamPostResponse) GetData() []*Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type Engagement struct {
+	Like                 uint32   `protobuf:"varint,1,opt,name=like,proto3" json:"like,omitempty"`
+	Reply                uint32   `protobuf:"varint,2,opt,name=reply,proto3" json:"reply,omitempty"`
+	Share                uint32   `protobuf:"varint,3,opt,name=share,proto3" json:"share,omitempty"`
+	ProfileView          uint32   `protobuf:"varint,4,opt,name=profile_view,json=profileView,proto3" json:"profile_view,omitempty"`
+	MediaClick           uint32   `protobuf:"varint,5,opt,name=media_click,json=mediaClick,proto3" json:"media_click,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Engagement) Reset()         { *m = Engagement{} }
+func (m *Engagement) String() string { return proto.CompactTextString(m) }
+func (*Engagement) ProtoMessage()    {}
+func (*Engagement) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{7}
+}
+
+func (m *Engagement) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Engagement.Unmarshal(m, b)
+}
+func (m *Engagement) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Engagement.Marshal(b, m, deterministic)
+}
+func (m *Engagement) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Engagement.Merge(m, src)
+}
+func (m *Engagement) XXX_Size() int {
+	return xxx_messageInfo_Engagement.Size(m)
+}
+func (m *Engagement) XXX_DiscardUnknown() {
+	xxx_messageInfo_Engagement.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Engagement proto.InternalMessageInfo
+
+func (m *Engagement) GetLike() uint32 {
+	if m != nil {
+		return m.Like
+	}
+	return 0
+}
+
+func (m *Engagement) GetReply() uint32 {
+	if m != nil {
+		return m.Reply
+	}
+	return 0
+}
+
+func (m *Engagement) GetShare() uint32 {
+	if m != nil {
+		return m.Share
+	}
+	return 0
+}
+
+func (m *Engagement) GetProfileView() uint32 {
+	if m != nil {
+		return m.ProfileView
+	}
+	return 0
+}
+
+func (m *Engagement) GetMediaClick() uint32 {
+	if m != nil {
+		return m.MediaClick
+	}
+	return 0
+}
+
+type Analytics struct {
+	Impression           uint32      `protobuf:"varint,1,opt,name=impression,proto3" json:"impression,omitempty"`
+	Engagement           *Engagement `protobuf:"bytes,2,opt,name=engagement,proto3" json:"engagement,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
+}
+
+func (m *Analytics) Reset()         { *m = Analytics{} }
+func (m *Analytics) String() string { return proto.CompactTextString(m) }
+func (*Analytics) ProtoMessage()    {}
+func (*Analytics) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{8}
+}
+
+func (m *Analytics) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Analytics.Unmarshal(m, b)
+}
+func (m *Analytics) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Analytics.Marshal(b, m, deterministic)
+}
+func (m *Analytics) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Analytics.Merge(m, src)
+}
+func (m *Analytics) XXX_Size() int {
+	return xxx_messageInfo_Analytics.Size(m)
+}
+func (m *Analytics) XXX_DiscardUnknown() {
+	xxx_messageInfo_Analytics.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Analytics proto.InternalMessageInfo
+
+func (m *Analytics) GetImpression() uint32 {
+	if m != nil {
+		return m.Impression
+	}
+	return 0
+}
+
+func (m *Analytics) GetEngagement() *Engagement {
+	if m != nil {
+		return m.Engagement
+	}
+	return nil
+}
+
+type MaskHtml struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MaskHtml) Reset()         { *m = MaskHtml{} }
+func (m *MaskHtml) String() string { return proto.CompactTextString(m) }
+func (*MaskHtml) ProtoMessage()    {}
+func (*MaskHtml) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{9}
+}
+
+func (m *MaskHtml) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MaskHtml.Unmarshal(m, b)
+}
+func (m *MaskHtml) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MaskHtml.Marshal(b, m, deterministic)
+}
+func (m *MaskHtml) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MaskHtml.Merge(m, src)
+}
+func (m *MaskHtml) XXX_Size() int {
+	return xxx_messageInfo_MaskHtml.Size(m)
+}
+func (m *MaskHtml) XXX_DiscardUnknown() {
+	xxx_messageInfo_MaskHtml.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MaskHtml proto.InternalMessageInfo
+
+type LastReply struct {
+	Postid               uint32     `protobuf:"varint,1,opt,name=postid,proto3" json:"postid,omitempty"`
+	Avatar               string     `protobuf:"bytes,2,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Content              string     `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	ContentOriginal      string     `protobuf:"bytes,4,opt,name=content_original,json=contentOriginal,proto3" json:"content_original,omitempty"`
+	Created              string     `protobuf:"bytes,5,opt,name=created,proto3" json:"created,omitempty"`
+	CreatedDisplay       string     `protobuf:"bytes,6,opt,name=created_display,json=createdDisplay,proto3" json:"created_display,omitempty"`
+	Username             string     `protobuf:"bytes,7,opt,name=username,proto3" json:"username,omitempty"`
+	Fullname             string     `protobuf:"bytes,8,opt,name=fullname,proto3" json:"fullname,omitempty"`
+	Titleurl             *any.Any   `protobuf:"bytes,9,opt,name=titleurl,proto3" json:"titleurl,omitempty"`
+	Title                *any.Any   `protobuf:"bytes,10,opt,name=title,proto3" json:"title,omitempty"`
+	Official             uint32     `protobuf:"varint,11,opt,name=official,proto3" json:"official,omitempty"`
+	Ispro                uint32     `protobuf:"varint,12,opt,name=ispro,proto3" json:"ispro,omitempty"`
+	Ispinned             uint32     `protobuf:"varint,13,opt,name=ispinned,proto3" json:"ispinned,omitempty"`
+	Trending             uint32     `protobuf:"varint,14,opt,name=trending,proto3" json:"trending,omitempty"`
+	Replies              string     `protobuf:"bytes,15,opt,name=replies,proto3" json:"replies,omitempty"`
+	Likes                uint32     `protobuf:"varint,16,opt,name=likes,proto3" json:"likes,omitempty"`
+	Dislikes             uint32     `protobuf:"varint,17,opt,name=dislikes,proto3" json:"dislikes,omitempty"`
+	Reposted             uint32     `protobuf:"varint,18,opt,name=reposted,proto3" json:"reposted,omitempty"`
+	Repostedfrom         *any.Any   `protobuf:"bytes,19,opt,name=repostedfrom,proto3" json:"repostedfrom,omitempty"`
+	Liked                uint32     `protobuf:"varint,20,opt,name=liked,proto3" json:"liked,omitempty"`
+	Likers               string     `protobuf:"bytes,21,opt,name=likers,proto3" json:"likers,omitempty"`
+	Saved                uint32     `protobuf:"varint,22,opt,name=saved,proto3" json:"saved,omitempty"`
+	Images               []*any.Any `protobuf:"bytes,23,rep,name=images,proto3" json:"images,omitempty"`
+	Attachment           []*any.Any `protobuf:"bytes,24,rep,name=attachment,proto3" json:"attachment,omitempty"`
+	ParentPostid         uint32     `protobuf:"varint,25,opt,name=parent_postid,json=parentPostid,proto3" json:"parent_postid,omitempty"`
+	Disliked             uint32     `protobuf:"varint,26,opt,name=disliked,proto3" json:"disliked,omitempty"`
+	Follow               uint32     `protobuf:"varint,27,opt,name=follow,proto3" json:"follow,omitempty"`
+	NewsfeedSource       string     `protobuf:"bytes,28,opt,name=newsfeed_source,json=newsfeedSource,proto3" json:"newsfeed_source,omitempty"`
+	NewsfeedLabel        string     `protobuf:"bytes,29,opt,name=newsfeed_label,json=newsfeedLabel,proto3" json:"newsfeed_label,omitempty"`
+	NewsfeedImg          string     `protobuf:"bytes,30,opt,name=newsfeed_img,json=newsfeedImg,proto3" json:"newsfeed_img,omitempty"`
+	Linkpreview          *any.Any   `protobuf:"bytes,31,opt,name=linkpreview,proto3" json:"linkpreview,omitempty"`
+	Tradeshare           *any.Any   `protobuf:"bytes,32,opt,name=tradeshare,proto3" json:"tradeshare,omitempty"`
+	TotalShare           string     `protobuf:"bytes,33,opt,name=total_share,json=totalShare,proto3" json:"total_share,omitempty"`
+	TargetPrice          []*any.Any `protobuf:"bytes,34,rep,name=target_price,json=targetPrice,proto3" json:"target_price,omitempty"`
+	Country              *any.Any   `protobuf:"bytes,35,opt,name=country,proto3" json:"country,omitempty"`
+	LastReplyDate        *any.Any   `protobuf:"bytes,36,opt,name=last_reply_date,json=lastReplyDate,proto3" json:"last_reply_date,omitempty"`
+	Isnews               uint32     `protobuf:"varint,37,opt,name=isnews,proto3" json:"isnews,omitempty"`
+	Isreport             uint32     `protobuf:"varint,38,opt,name=isreport,proto3" json:"isreport,omitempty"`
+	Topics               []*any.Any `protobuf:"bytes,39,rep,name=topics,proto3" json:"topics,omitempty"`
+	LastReply            *any.Any   `protobuf:"bytes,40,opt,name=last_reply,json=lastReply,proto3" json:"last_reply,omitempty"`
+	MaskHtml             *MaskHtml  `protobuf:"bytes,41,opt,name=mask_html,json=maskHtml,proto3" json:"mask_html,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
+}
+
+func (m *LastReply) Reset()         { *m = LastReply{} }
+func (m *LastReply) String() string { return proto.CompactTextString(m) }
+func (*LastReply) ProtoMessage()    {}
+func (*LastReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{10}
+}
+
+func (m *LastReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LastReply.Unmarshal(m, b)
+}
+func (m *LastReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LastReply.Marshal(b, m, deterministic)
+}
+func (m *LastReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LastReply.Merge(m, src)
+}
+func (m *LastReply) XXX_Size() int {
+	return xxx_messageInfo_LastReply.Size(m)
+}
+func (m *LastReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_LastReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LastReply proto.InternalMessageInfo
+
+func (m *LastReply) GetPostid() uint32 {
+	if m != nil {
+		return m.Postid
+	}
+	return 0
+}
+
+func (m *LastReply) GetAvatar() string {
+	if m != nil {
+		return m.Avatar
+	}
+	return ""
+}
+
+func (m *LastReply) GetContent() string {
+	if m != nil {
+		return m.Content
+	}
+	return ""
+}
+
+func (m *LastReply) GetContentOriginal() string {
+	if m != nil {
+		return m.ContentOriginal
+	}
+	return ""
+}
+
+func (m *LastReply) GetCreated() string {
+	if m != nil {
+		return m.Created
+	}
+	return ""
+}
+
+func (m *LastReply) GetCreatedDisplay() string {
+	if m != nil {
+		return m.CreatedDisplay
+	}
+	return ""
+}
+
+func (m *LastReply) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
+}
+
+func (m *LastReply) GetFullname() string {
+	if m != nil {
+		return m.Fullname
+	}
+	return ""
+}
+
+func (m *LastReply) GetTitleurl() *any.Any {
+	if m != nil {
+		return m.Titleurl
+	}
+	return nil
+}
+
+func (m *LastReply) GetTitle() *any.Any {
+	if m != nil {
+		return m.Title
+	}
+	return nil
+}
+
+func (m *LastReply) GetOfficial() uint32 {
+	if m != nil {
+		return m.Official
+	}
+	return 0
+}
+
+func (m *LastReply) GetIspro() uint32 {
+	if m != nil {
+		return m.Ispro
+	}
+	return 0
+}
+
+func (m *LastReply) GetIspinned() uint32 {
+	if m != nil {
+		return m.Ispinned
+	}
+	return 0
+}
+
+func (m *LastReply) GetTrending() uint32 {
+	if m != nil {
+		return m.Trending
+	}
+	return 0
+}
+
+func (m *LastReply) GetReplies() string {
+	if m != nil {
+		return m.Replies
+	}
+	return ""
+}
+
+func (m *LastReply) GetLikes() uint32 {
+	if m != nil {
+		return m.Likes
+	}
+	return 0
+}
+
+func (m *LastReply) GetDislikes() uint32 {
+	if m != nil {
+		return m.Dislikes
+	}
+	return 0
+}
+
+func (m *LastReply) GetReposted() uint32 {
+	if m != nil {
+		return m.Reposted
+	}
+	return 0
+}
+
+func (m *LastReply) GetRepostedfrom() *any.Any {
+	if m != nil {
+		return m.Repostedfrom
+	}
+	return nil
+}
+
+func (m *LastReply) GetLiked() uint32 {
+	if m != nil {
+		return m.Liked
+	}
+	return 0
+}
+
+func (m *LastReply) GetLikers() string {
+	if m != nil {
+		return m.Likers
+	}
+	return ""
+}
+
+func (m *LastReply) GetSaved() uint32 {
+	if m != nil {
+		return m.Saved
+	}
+	return 0
+}
+
+func (m *LastReply) GetImages() []*any.Any {
+	if m != nil {
+		return m.Images
+	}
+	return nil
+}
+
+func (m *LastReply) GetAttachment() []*any.Any {
+	if m != nil {
+		return m.Attachment
+	}
+	return nil
+}
+
+func (m *LastReply) GetParentPostid() uint32 {
+	if m != nil {
+		return m.ParentPostid
+	}
+	return 0
+}
+
+func (m *LastReply) GetDisliked() uint32 {
+	if m != nil {
+		return m.Disliked
+	}
+	return 0
+}
+
+func (m *LastReply) GetFollow() uint32 {
+	if m != nil {
+		return m.Follow
+	}
+	return 0
+}
+
+func (m *LastReply) GetNewsfeedSource() string {
+	if m != nil {
+		return m.NewsfeedSource
+	}
+	return ""
+}
+
+func (m *LastReply) GetNewsfeedLabel() string {
+	if m != nil {
+		return m.NewsfeedLabel
+	}
+	return ""
+}
+
+func (m *LastReply) GetNewsfeedImg() string {
+	if m != nil {
+		return m.NewsfeedImg
+	}
+	return ""
+}
+
+func (m *LastReply) GetLinkpreview() *any.Any {
+	if m != nil {
+		return m.Linkpreview
+	}
+	return nil
+}
+
+func (m *LastReply) GetTradeshare() *any.Any {
+	if m != nil {
+		return m.Tradeshare
+	}
+	return nil
+}
+
+func (m *LastReply) GetTotalShare() string {
+	if m != nil {
+		return m.TotalShare
+	}
+	return ""
+}
+
+func (m *LastReply) GetTargetPrice() []*any.Any {
+	if m != nil {
+		return m.TargetPrice
+	}
+	return nil
+}
+
+func (m *LastReply) GetCountry() *any.Any {
+	if m != nil {
+		return m.Country
+	}
+	return nil
+}
+
+func (m *LastReply) GetLastReplyDate() *any.Any {
+	if m != nil {
+		return m.LastReplyDate
+	}
+	return nil
+}
+
+func (m *LastReply) GetIsnews() uint32 {
+	if m != nil {
+		return m.Isnews
+	}
+	return 0
+}
+
+func (m *LastReply) GetIsreport() uint32 {
+	if m != nil {
+		return m.Isreport
+	}
+	return 0
+}
+
+func (m *LastReply) GetTopics() []*any.Any {
+	if m != nil {
+		return m.Topics
+	}
+	return nil
+}
+
+func (m *LastReply) GetLastReply() *any.Any {
+	if m != nil {
+		return m.LastReply
+	}
+	return nil
+}
+
+func (m *LastReply) GetMaskHtml() *MaskHtml {
+	if m != nil {
+		return m.MaskHtml
+	}
+	return nil
+}
+
+type Attr struct {
+	Class                string   `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
+	DataCompany          string   `protobuf:"bytes,2,opt,name=data_company,json=dataCompany,proto3" json:"data_company,omitempty"`
+	Href                 string   `protobuf:"bytes,3,opt,name=href,proto3" json:"href,omitempty"`
+	Target               string   `protobuf:"bytes,4,opt,name=target,proto3" json:"target,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Attr) Reset()         { *m = Attr{} }
+func (m *Attr) String() string { return proto.CompactTextString(m) }
+func (*Attr) ProtoMessage()    {}
+func (*Attr) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{11}
+}
+
+func (m *Attr) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Attr.Unmarshal(m, b)
+}
+func (m *Attr) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Attr.Marshal(b, m, deterministic)
+}
+func (m *Attr) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Attr.Merge(m, src)
+}
+func (m *Attr) XXX_Size() int {
+	return xxx_messageInfo_Attr.Size(m)
+}
+func (m *Attr) XXX_DiscardUnknown() {
+	xxx_messageInfo_Attr.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Attr proto.InternalMessageInfo
+
+func (m *Attr) GetClass() string {
+	if m != nil {
+		return m.Class
+	}
+	return ""
+}
+
+func (m *Attr) GetDataCompany() string {
+	if m != nil {
+		return m.DataCompany
+	}
+	return ""
+}
+
+func (m *Attr) GetHref() string {
+	if m != nil {
+		return m.Href
+	}
+	return ""
+}
+
+func (m *Attr) GetTarget() string {
+	if m != nil {
+		return m.Target
+	}
+	return ""
+}
+
+type Kbtm struct {
+	Tag                  string   `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
+	Attr                 *Attr    `protobuf:"bytes,2,opt,name=attr,proto3" json:"attr,omitempty"`
+	Text                 string   `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Kbtm) Reset()         { *m = Kbtm{} }
+func (m *Kbtm) String() string { return proto.CompactTextString(m) }
+func (*Kbtm) ProtoMessage()    {}
+func (*Kbtm) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{12}
+}
+
+func (m *Kbtm) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Kbtm.Unmarshal(m, b)
+}
+func (m *Kbtm) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Kbtm.Marshal(b, m, deterministic)
+}
+func (m *Kbtm) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Kbtm.Merge(m, src)
+}
+func (m *Kbtm) XXX_Size() int {
+	return xxx_messageInfo_Kbtm.Size(m)
+}
+func (m *Kbtm) XXX_DiscardUnknown() {
+	xxx_messageInfo_Kbtm.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Kbtm proto.InternalMessageInfo
+
+func (m *Kbtm) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+func (m *Kbtm) GetAttr() *Attr {
+	if m != nil {
+		return m.Attr
+	}
+	return nil
+}
+
+func (m *Kbtm) GetText() string {
+	if m != nil {
+		return m.Text
+	}
+	return ""
+}
+
+type Attr1 struct {
+	Class                string   `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
+	DataCompany          string   `protobuf:"bytes,2,opt,name=data_company,json=dataCompany,proto3" json:"data_company,omitempty"`
+	Href                 string   `protobuf:"bytes,3,opt,name=href,proto3" json:"href,omitempty"`
+	Target               string   `protobuf:"bytes,4,opt,name=target,proto3" json:"target,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Attr1) Reset()         { *m = Attr1{} }
+func (m *Attr1) String() string { return proto.CompactTextString(m) }
+func (*Attr1) ProtoMessage()    {}
+func (*Attr1) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{13}
+}
+
+func (m *Attr1) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Attr1.Unmarshal(m, b)
+}
+func (m *Attr1) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Attr1.Marshal(b, m, deterministic)
+}
+func (m *Attr1) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Attr1.Merge(m, src)
+}
+func (m *Attr1) XXX_Size() int {
+	return xxx_messageInfo_Attr1.Size(m)
+}
+func (m *Attr1) XXX_DiscardUnknown() {
+	xxx_messageInfo_Attr1.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Attr1 proto.InternalMessageInfo
+
+func (m *Attr1) GetClass() string {
+	if m != nil {
+		return m.Class
+	}
+	return ""
+}
+
+func (m *Attr1) GetDataCompany() string {
+	if m != nil {
+		return m.DataCompany
+	}
+	return ""
+}
+
+func (m *Attr1) GetHref() string {
+	if m != nil {
+		return m.Href
+	}
+	return ""
+}
+
+func (m *Attr1) GetTarget() string {
+	if m != nil {
+		return m.Target
+	}
+	return ""
+}
+
+type Qmqh struct {
+	Tag                  string   `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
+	Attr                 *Attr1   `protobuf:"bytes,2,opt,name=attr,proto3" json:"attr,omitempty"`
+	Text                 string   `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Qmqh) Reset()         { *m = Qmqh{} }
+func (m *Qmqh) String() string { return proto.CompactTextString(m) }
+func (*Qmqh) ProtoMessage()    {}
+func (*Qmqh) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{14}
+}
+
+func (m *Qmqh) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Qmqh.Unmarshal(m, b)
+}
+func (m *Qmqh) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Qmqh.Marshal(b, m, deterministic)
+}
+func (m *Qmqh) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Qmqh.Merge(m, src)
+}
+func (m *Qmqh) XXX_Size() int {
+	return xxx_messageInfo_Qmqh.Size(m)
+}
+func (m *Qmqh) XXX_DiscardUnknown() {
+	xxx_messageInfo_Qmqh.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Qmqh proto.InternalMessageInfo
+
+func (m *Qmqh) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+func (m *Qmqh) GetAttr() *Attr1 {
+	if m != nil {
+		return m.Attr
+	}
+	return nil
+}
+
+func (m *Qmqh) GetText() string {
+	if m != nil {
+		return m.Text
+	}
+	return ""
+}
+
+type Attr2 struct {
+	Class                string   `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
+	DataCompany          string   `protobuf:"bytes,2,opt,name=data_company,json=dataCompany,proto3" json:"data_company,omitempty"`
+	Href                 string   `protobuf:"bytes,3,opt,name=href,proto3" json:"href,omitempty"`
+	Target               string   `protobuf:"bytes,4,opt,name=target,proto3" json:"target,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Attr2) Reset()         { *m = Attr2{} }
+func (m *Attr2) String() string { return proto.CompactTextString(m) }
+func (*Attr2) ProtoMessage()    {}
+func (*Attr2) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{15}
+}
+
+func (m *Attr2) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Attr2.Unmarshal(m, b)
+}
+func (m *Attr2) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Attr2.Marshal(b, m, deterministic)
+}
+func (m *Attr2) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Attr2.Merge(m, src)
+}
+func (m *Attr2) XXX_Size() int {
+	return xxx_messageInfo_Attr2.Size(m)
+}
+func (m *Attr2) XXX_DiscardUnknown() {
+	xxx_messageInfo_Attr2.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Attr2 proto.InternalMessageInfo
+
+func (m *Attr2) GetClass() string {
+	if m != nil {
+		return m.Class
+	}
+	return ""
+}
+
+func (m *Attr2) GetDataCompany() string {
+	if m != nil {
+		return m.DataCompany
+	}
+	return ""
+}
+
+func (m *Attr2) GetHref() string {
+	if m != nil {
+		return m.Href
+	}
+	return ""
+}
+
+func (m *Attr2) GetTarget() string {
+	if m != nil {
+		return m.Target
+	}
+	return ""
+}
+
+type Dobj struct {
+	Tag                  string   `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
+	Attr                 *Attr2   `protobuf:"bytes,2,opt,name=attr,proto3" json:"attr,omitempty"`
+	Text                 string   `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Dobj) Reset()         { *m = Dobj{} }
+func (m *Dobj) String() string { return proto.CompactTextString(m) }
+func (*Dobj) ProtoMessage()    {}
+func (*Dobj) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{16}
+}
+
+func (m *Dobj) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Dobj.Unmarshal(m, b)
+}
+func (m *Dobj) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Dobj.Marshal(b, m, deterministic)
+}
+func (m *Dobj) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Dobj.Merge(m, src)
+}
+func (m *Dobj) XXX_Size() int {
+	return xxx_messageInfo_Dobj.Size(m)
+}
+func (m *Dobj) XXX_DiscardUnknown() {
+	xxx_messageInfo_Dobj.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Dobj proto.InternalMessageInfo
+
+func (m *Dobj) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+func (m *Dobj) GetAttr() *Attr2 {
+	if m != nil {
+		return m.Attr
+	}
+	return nil
+}
+
+func (m *Dobj) GetText() string {
+	if m != nil {
+		return m.Text
+	}
+	return ""
+}
+
+type Attr3 struct {
+	Class                string   `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
+	DataCompany          string   `protobuf:"bytes,2,opt,name=data_company,json=dataCompany,proto3" json:"data_company,omitempty"`
+	Href                 string   `protobuf:"bytes,3,opt,name=href,proto3" json:"href,omitempty"`
+	Target               string   `protobuf:"bytes,4,opt,name=target,proto3" json:"target,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Attr3) Reset()         { *m = Attr3{} }
+func (m *Attr3) String() string { return proto.CompactTextString(m) }
+func (*Attr3) ProtoMessage()    {}
+func (*Attr3) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{17}
+}
+
+func (m *Attr3) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Attr3.Unmarshal(m, b)
+}
+func (m *Attr3) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Attr3.Marshal(b, m, deterministic)
+}
+func (m *Attr3) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Attr3.Merge(m, src)
+}
+func (m *Attr3) XXX_Size() int {
+	return xxx_messageInfo_Attr3.Size(m)
+}
+func (m *Attr3) XXX_DiscardUnknown() {
+	xxx_messageInfo_Attr3.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Attr3 proto.InternalMessageInfo
+
+func (m *Attr3) GetClass() string {
+	if m != nil {
+		return m.Class
+	}
+	return ""
+}
+
+func (m *Attr3) GetDataCompany() string {
+	if m != nil {
+		return m.DataCompany
+	}
+	return ""
+}
+
+func (m *Attr3) GetHref() string {
+	if m != nil {
+		return m.Href
+	}
+	return ""
+}
+
+func (m *Attr3) GetTarget() string {
+	if m != nil {
+		return m.Target
+	}
+	return ""
+}
+
+type Fltt struct {
+	Tag                  string   `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
+	Attr                 *Attr3   `protobuf:"bytes,2,opt,name=attr,proto3" json:"attr,omitempty"`
+	Text                 string   `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Fltt) Reset()         { *m = Fltt{} }
+func (m *Fltt) String() string { return proto.CompactTextString(m) }
+func (*Fltt) ProtoMessage()    {}
+func (*Fltt) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{18}
+}
+
+func (m *Fltt) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Fltt.Unmarshal(m, b)
+}
+func (m *Fltt) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Fltt.Marshal(b, m, deterministic)
+}
+func (m *Fltt) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Fltt.Merge(m, src)
+}
+func (m *Fltt) XXX_Size() int {
+	return xxx_messageInfo_Fltt.Size(m)
+}
+func (m *Fltt) XXX_DiscardUnknown() {
+	xxx_messageInfo_Fltt.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Fltt proto.InternalMessageInfo
+
+func (m *Fltt) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+func (m *Fltt) GetAttr() *Attr3 {
+	if m != nil {
+		return m.Attr
+	}
+	return nil
+}
+
+func (m *Fltt) GetText() string {
+	if m != nil {
+		return m.Text
+	}
+	return ""
+}
+
+type Attr4 struct {
+	Class                string   `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
+	DataCompany          string   `protobuf:"bytes,2,opt,name=data_company,json=dataCompany,proto3" json:"data_company,omitempty"`
+	Href                 string   `protobuf:"bytes,3,opt,name=href,proto3" json:"href,omitempty"`
+	Target               string   `protobuf:"bytes,4,opt,name=target,proto3" json:"target,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Attr4) Reset()         { *m = Attr4{} }
+func (m *Attr4) String() string { return proto.CompactTextString(m) }
+func (*Attr4) ProtoMessage()    {}
+func (*Attr4) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{19}
+}
+
+func (m *Attr4) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Attr4.Unmarshal(m, b)
+}
+func (m *Attr4) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Attr4.Marshal(b, m, deterministic)
+}
+func (m *Attr4) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Attr4.Merge(m, src)
+}
+func (m *Attr4) XXX_Size() int {
+	return xxx_messageInfo_Attr4.Size(m)
+}
+func (m *Attr4) XXX_DiscardUnknown() {
+	xxx_messageInfo_Attr4.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Attr4 proto.InternalMessageInfo
+
+func (m *Attr4) GetClass() string {
+	if m != nil {
+		return m.Class
+	}
+	return ""
+}
+
+func (m *Attr4) GetDataCompany() string {
+	if m != nil {
+		return m.DataCompany
+	}
+	return ""
+}
+
+func (m *Attr4) GetHref() string {
+	if m != nil {
+		return m.Href
+	}
+	return ""
+}
+
+func (m *Attr4) GetTarget() string {
+	if m != nil {
+		return m.Target
+	}
+	return ""
+}
+
+type Okhg struct {
+	Tag                  string   `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
+	Attr                 *Attr4   `protobuf:"bytes,2,opt,name=attr,proto3" json:"attr,omitempty"`
+	Text                 string   `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Okhg) Reset()         { *m = Okhg{} }
+func (m *Okhg) String() string { return proto.CompactTextString(m) }
+func (*Okhg) ProtoMessage()    {}
+func (*Okhg) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{20}
+}
+
+func (m *Okhg) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Okhg.Unmarshal(m, b)
+}
+func (m *Okhg) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Okhg.Marshal(b, m, deterministic)
+}
+func (m *Okhg) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Okhg.Merge(m, src)
+}
+func (m *Okhg) XXX_Size() int {
+	return xxx_messageInfo_Okhg.Size(m)
+}
+func (m *Okhg) XXX_DiscardUnknown() {
+	xxx_messageInfo_Okhg.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Okhg proto.InternalMessageInfo
+
+func (m *Okhg) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+func (m *Okhg) GetAttr() *Attr4 {
+	if m != nil {
+		return m.Attr
+	}
+	return nil
+}
+
+func (m *Okhg) GetText() string {
+	if m != nil {
+		return m.Text
+	}
+	return ""
+}
+
+type MaskHtml1 struct {
+	KBtm                 *Kbtm    `protobuf:"bytes,1,opt,name=kBtm,proto3" json:"kBtm,omitempty"`
+	QmQh                 *Qmqh    `protobuf:"bytes,2,opt,name=QmQh,proto3" json:"QmQh,omitempty"`
+	DOBj                 *Dobj    `protobuf:"bytes,3,opt,name=DOBj,proto3" json:"DOBj,omitempty"`
+	FlTT                 *Fltt    `protobuf:"bytes,4,opt,name=FlTT,proto3" json:"FlTT,omitempty"`
+	OkHG                 *Okhg    `protobuf:"bytes,5,opt,name=okHG,proto3" json:"okHG,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MaskHtml1) Reset()         { *m = MaskHtml1{} }
+func (m *MaskHtml1) String() string { return proto.CompactTextString(m) }
+func (*MaskHtml1) ProtoMessage()    {}
+func (*MaskHtml1) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{21}
+}
+
+func (m *MaskHtml1) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MaskHtml1.Unmarshal(m, b)
+}
+func (m *MaskHtml1) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MaskHtml1.Marshal(b, m, deterministic)
+}
+func (m *MaskHtml1) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MaskHtml1.Merge(m, src)
+}
+func (m *MaskHtml1) XXX_Size() int {
+	return xxx_messageInfo_MaskHtml1.Size(m)
+}
+func (m *MaskHtml1) XXX_DiscardUnknown() {
+	xxx_messageInfo_MaskHtml1.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MaskHtml1 proto.InternalMessageInfo
+
+func (m *MaskHtml1) GetKBtm() *Kbtm {
+	if m != nil {
+		return m.KBtm
+	}
+	return nil
+}
+
+func (m *MaskHtml1) GetQmQh() *Qmqh {
+	if m != nil {
+		return m.QmQh
+	}
+	return nil
+}
+
+func (m *MaskHtml1) GetDOBj() *Dobj {
+	if m != nil {
+		return m.DOBj
+	}
+	return nil
+}
+
+func (m *MaskHtml1) GetFlTT() *Fltt {
+	if m != nil {
+		return m.FlTT
+	}
+	return nil
+}
+
+func (m *MaskHtml1) GetOkHG() *Okhg {
+	if m != nil {
+		return m.OkHG
+	}
+	return nil
+}
+
+type Data struct {
+	Postid               uint32     `protobuf:"varint,1,opt,name=postid,proto3" json:"postid,omitempty"`
+	Titleurl             string     `protobuf:"bytes,2,opt,name=titleurl,proto3" json:"titleurl,omitempty"`
+	Title                string     `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Content              string     `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
+	ContentOriginal      string     `protobuf:"bytes,5,opt,name=content_original,json=contentOriginal,proto3" json:"content_original,omitempty"`
+	Created              string     `protobuf:"bytes,6,opt,name=created,proto3" json:"created,omitempty"`
+	CreatedDisplay       string     `protobuf:"bytes,7,opt,name=created_display,json=createdDisplay,proto3" json:"created_display,omitempty"`
+	Updated              string     `protobuf:"bytes,8,opt,name=updated,proto3" json:"updated,omitempty"`
+	Userid               uint32     `protobuf:"varint,9,opt,name=userid,proto3" json:"userid,omitempty"`
+	IsAuthor             uint32     `protobuf:"varint,10,opt,name=is_author,json=isAuthor,proto3" json:"is_author,omitempty"`
+	Username             string     `protobuf:"bytes,11,opt,name=username,proto3" json:"username,omitempty"`
+	Fullname             string     `protobuf:"bytes,12,opt,name=fullname,proto3" json:"fullname,omitempty"`
+	Avatar               string     `protobuf:"bytes,13,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Official             uint32     `protobuf:"varint,14,opt,name=official,proto3" json:"official,omitempty"`
+	UserPriv             uint32     `protobuf:"varint,15,opt,name=user_priv,json=userPriv,proto3" json:"user_priv,omitempty"`
+	Ispro                uint32     `protobuf:"varint,16,opt,name=ispro,proto3" json:"ispro,omitempty"`
+	Ispinned             uint32     `protobuf:"varint,17,opt,name=ispinned,proto3" json:"ispinned,omitempty"`
+	Trending             uint32     `protobuf:"varint,18,opt,name=trending,proto3" json:"trending,omitempty"`
+	Replies              string     `protobuf:"bytes,19,opt,name=replies,proto3" json:"replies,omitempty"`
+	Noreply              uint32     `protobuf:"varint,20,opt,name=noreply,proto3" json:"noreply,omitempty"`
+	Likes                uint32     `protobuf:"varint,21,opt,name=likes,proto3" json:"likes,omitempty"`
+	Dislikes             uint32     `protobuf:"varint,22,opt,name=dislikes,proto3" json:"dislikes,omitempty"`
+	Reposted             uint32     `protobuf:"varint,23,opt,name=reposted,proto3" json:"reposted,omitempty"`
+	Repostedfrom         *any.Any   `protobuf:"bytes,24,opt,name=repostedfrom,proto3" json:"repostedfrom,omitempty"`
+	Liked                uint32     `protobuf:"varint,25,opt,name=liked,proto3" json:"liked,omitempty"`
+	Likers               string     `protobuf:"bytes,26,opt,name=likers,proto3" json:"likers,omitempty"`
+	Saved                uint32     `protobuf:"varint,27,opt,name=saved,proto3" json:"saved,omitempty"`
+	Images               []string   `protobuf:"bytes,28,rep,name=images,proto3" json:"images,omitempty"`
+	Polling              []*any.Any `protobuf:"bytes,29,rep,name=polling,proto3" json:"polling,omitempty"`
+	Attachment           []*any.Any `protobuf:"bytes,30,rep,name=attachment,proto3" json:"attachment,omitempty"`
+	ParentPostid         uint32     `protobuf:"varint,31,opt,name=parent_postid,json=parentPostid,proto3" json:"parent_postid,omitempty"`
+	Disliked             uint32     `protobuf:"varint,32,opt,name=disliked,proto3" json:"disliked,omitempty"`
+	Follow               uint32     `protobuf:"varint,33,opt,name=follow,proto3" json:"follow,omitempty"`
+	Reports              []*any.Any `protobuf:"bytes,34,rep,name=reports,proto3" json:"reports,omitempty"`
+	NewsfeedSource       string     `protobuf:"bytes,35,opt,name=newsfeed_source,json=newsfeedSource,proto3" json:"newsfeed_source,omitempty"`
+	NewsfeedLabel        string     `protobuf:"bytes,36,opt,name=newsfeed_label,json=newsfeedLabel,proto3" json:"newsfeed_label,omitempty"`
+	NewsfeedImg          string     `protobuf:"bytes,37,opt,name=newsfeed_img,json=newsfeedImg,proto3" json:"newsfeed_img,omitempty"`
+	Linkpreview          *any.Any   `protobuf:"bytes,38,opt,name=linkpreview,proto3" json:"linkpreview,omitempty"`
+	Tradeshare           *any.Any   `protobuf:"bytes,39,opt,name=tradeshare,proto3" json:"tradeshare,omitempty"`
+	TotalShare           string     `protobuf:"bytes,40,opt,name=total_share,json=totalShare,proto3" json:"total_share,omitempty"`
+	TargetPrice          []*any.Any `protobuf:"bytes,41,rep,name=target_price,json=targetPrice,proto3" json:"target_price,omitempty"`
+	Analytics            *Analytics `protobuf:"bytes,42,opt,name=analytics,proto3" json:"analytics,omitempty"`
+	Country              *any.Any   `protobuf:"bytes,43,opt,name=country,proto3" json:"country,omitempty"`
+	LastReplyDate        uint32     `protobuf:"varint,44,opt,name=last_reply_date,json=lastReplyDate,proto3" json:"last_reply_date,omitempty"`
+	Isnews               uint32     `protobuf:"varint,45,opt,name=isnews,proto3" json:"isnews,omitempty"`
+	Isreport             uint32     `protobuf:"varint,46,opt,name=isreport,proto3" json:"isreport,omitempty"`
+	Topics               []string   `protobuf:"bytes,47,rep,name=topics,proto3" json:"topics,omitempty"`
+	Ischart              uint32     `protobuf:"varint,48,opt,name=ischart,proto3" json:"ischart,omitempty"`
+	LastReply            *LastReply `protobuf:"bytes,49,opt,name=last_reply,json=lastReply,proto3" json:"last_reply,omitempty"`
+	MaskHtml             *MaskHtml1 `protobuf:"bytes,50,opt,name=mask_html,json=maskHtml,proto3" json:"mask_html,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
+}
+
+func (m *Data) Reset()         { *m = Data{} }
+func (m *Data) String() string { return proto.CompactTextString(m) }
+func (*Data) ProtoMessage()    {}
+func (*Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17088f88d67e5b2d, []int{22}
+}
+
+func (m *Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Data.Unmarshal(m, b)
+}
+func (m *Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Data.Marshal(b, m, deterministic)
+}
+func (m *Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Data.Merge(m, src)
+}
+func (m *Data) XXX_Size() int {
+	return xxx_messageInfo_Data.Size(m)
+}
+func (m *Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Data proto.InternalMessageInfo
+
+func (m *Data) GetPostid() uint32 {
+	if m != nil {
+		return m.Postid
+	}
+	return 0
+}
+
+func (m *Data) GetTitleurl() string {
+	if m != nil {
+		return m.Titleurl
+	}
+	return ""
+}
+
+func (m *Data) GetTitle() string {
+	if m != nil {
+		return m.Title
+	}
+	return ""
+}
+
+func (m *Data) GetContent() string {
+	if m != nil {
+		return m.Content
+	}
+	return ""
+}
+
+func (m *Data) GetContentOriginal() string {
+	if m != nil {
+		return m.ContentOriginal
+	}
+	return ""
+}
+
+func (m *Data) GetCreated() string {
+	if m != nil {
+		return m.Created
+	}
+	return ""
+}
+
+func (m *Data) GetCreatedDisplay() string {
+	if m != nil {
+		return m.CreatedDisplay
+	}
+	return ""
+}
+
+func (m *Data) GetUpdated() string {
+	if m != nil {
+		return m.Updated
+	}
+	return ""
+}
+
+func (m *Data) GetUserid() uint32 {
+	if m != nil {
+		return m.Userid
+	}
+	return 0
+}
+
+func (m *Data) GetIsAuthor() uint32 {
+	if m != nil {
+		return m.IsAuthor
+	}
+	return 0
+}
+
+func (m *Data) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
+}
+
+func (m *Data) GetFullname() string {
+	if m != nil {
+		return m.Fullname
+	}
+	return ""
+}
+
+func (m *Data) GetAvatar() string {
+	if m != nil {
+		return m.Avatar
+	}
+	return ""
+}
+
+func (m *Data) GetOfficial() uint32 {
+	if m != nil {
+		return m.Official
+	}
+	return 0
+}
+
+func (m *Data) GetUserPriv() uint32 {
+	if m != nil {
+		return m.UserPriv
+	}
+	return 0
+}
+
+func (m *Data) GetIspro() uint32 {
+	if m != nil {
+		return m.Ispro
+	}
+	return 0
+}
+
+func (m *Data) GetIspinned() uint32 {
+	if m != nil {
+		return m.Ispinned
+	}
+	return 0
+}
+
+func (m *Data) GetTrending() uint32 {
+	if m != nil {
+		return m.Trending
+	}
+	return 0
+}
+
+func (m *Data) GetReplies() string {
+	if m != nil {
+		return m.Replies
+	}
+	return ""
+}
+
+func (m *Data) GetNoreply() uint32 {
+	if m != nil {
+		return m.Noreply
+	}
+	return 0
+}
+
+func (m *Data) GetLikes() uint32 {
+	if m != nil {
+		return m.Likes
+	}
+	return 0
+}
+
+func (m *Data) GetDislikes() uint32 {
+	if m != nil {
+		return m.Dislikes
+	}
+	return 0
+}
+
+func (m *Data) GetReposted() uint32 {
+	if m != nil {
+		return m.Reposted
+	}
+	return 0
+}
+
+func (m *Data) GetRepostedfrom() *any.Any {
+	if m != nil {
+		return m.Repostedfrom
+	}
+	return nil
+}
+
+func (m *Data) GetLiked() uint32 {
+	if m != nil {
+		return m.Liked
+	}
+	return 0
+}
+
+func (m *Data) GetLikers() string {
+	if m != nil {
+		return m.Likers
+	}
+	return ""
+}
+
+func (m *Data) GetSaved() uint32 {
+	if m != nil {
+		return m.Saved
+	}
+	return 0
+}
+
+func (m *Data) GetImages() []string {
+	if m != nil {
+		return m.Images
+	}
+	return nil
+}
+
+func (m *Data) GetPolling() []*any.Any {
+	if m != nil {
+		return m.Polling
+	}
+	return nil
+}
+
+func (m *Data) GetAttachment() []*any.Any {
+	if m != nil {
+		return m.Attachment
+	}
+	return nil
+}
+
+func (m *Data) GetParentPostid() uint32 {
+	if m != nil {
+		return m.ParentPostid
+	}
+	return 0
+}
+
+func (m *Data) GetDisliked() uint32 {
+	if m != nil {
+		return m.Disliked
+	}
+	return 0
+}
+
+func (m *Data) GetFollow() uint32 {
+	if m != nil {
+		return m.Follow
+	}
+	return 0
+}
+
+func (m *Data) GetReports() []*any.Any {
+	if m != nil {
+		return m.Reports
+	}
+	return nil
+}
+
+func (m *Data) GetNewsfeedSource() string {
+	if m != nil {
+		return m.NewsfeedSource
+	}
+	return ""
+}
+
+func (m *Data) GetNewsfeedLabel() string {
+	if m != nil {
+		return m.NewsfeedLabel
+	}
+	return ""
+}
+
+func (m *Data) GetNewsfeedImg() string {
+	if m != nil {
+		return m.NewsfeedImg
+	}
+	return ""
+}
+
+func (m *Data) GetLinkpreview() *any.Any {
+	if m != nil {
+		return m.Linkpreview
+	}
+	return nil
+}
+
+func (m *Data) GetTradeshare() *any.Any {
+	if m != nil {
+		return m.Tradeshare
+	}
+	return nil
+}
+
+func (m *Data) GetTotalShare() string {
+	if m != nil {
+		return m.TotalShare
+	}
+	return ""
+}
+
+func (m *Data) GetTargetPrice() []*any.Any {
+	if m != nil {
+		return m.TargetPrice
+	}
+	return nil
+}
+
+func (m *Data) GetAnalytics() *Analytics {
+	if m != nil {
+		return m.Analytics
+	}
+	return nil
+}
+
+func (m *Data) GetCountry() *any.Any {
+	if m != nil {
+		return m.Country
+	}
+	return nil
+}
+
+func (m *Data) GetLastReplyDate() uint32 {
+	if m != nil {
+		return m.LastReplyDate
+	}
+	return 0
+}
+
+func (m *Data) GetIsnews() uint32 {
+	if m != nil {
+		return m.Isnews
+	}
+	return 0
+}
+
+func (m *Data) GetIsreport() uint32 {
+	if m != nil {
+		return m.Isreport
+	}
+	return 0
+}
+
+func (m *Data) GetTopics() []string {
+	if m != nil {
+		return m.Topics
+	}
+	return nil
+}
+
+func (m *Data) GetIschart() uint32 {
+	if m != nil {
+		return m.Ischart
+	}
+	return 0
+}
+
+func (m *Data) GetLastReply() *LastReply {
+	if m != nil {
+		return m.LastReply
+	}
+	return nil
+}
+
+func (m *Data) GetMaskHtml() *MaskHtml1 {
+	if m != nil {
+		return m.MaskHtml
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*MapRequest)(nil), "benchmark.MapRequest")
 	proto.RegisterType((*MapResponse)(nil), "benchmark.MapResponse")
 	proto.RegisterType((*Distance)(nil), "benchmark.Distance")
 	proto.RegisterType((*Duration)(nil), "benchmark.Duration")
 	proto.RegisterType((*Elements)(nil), "benchmark.Elements")
+	proto.RegisterType((*StreamPostRequest)(nil), "benchmark.StreamPostRequest")
+	proto.RegisterType((*StreamPostResponse)(nil), "benchmark.StreamPostResponse")
+	proto.RegisterType((*Engagement)(nil), "benchmark.Engagement")
+	proto.RegisterType((*Analytics)(nil), "benchmark.Analytics")
+	proto.RegisterType((*MaskHtml)(nil), "benchmark.Mask_html")
+	proto.RegisterType((*LastReply)(nil), "benchmark.Last_reply")
+	proto.RegisterType((*Attr)(nil), "benchmark.Attr")
+	proto.RegisterType((*Kbtm)(nil), "benchmark.Kbtm")
+	proto.RegisterType((*Attr1)(nil), "benchmark.Attr1")
+	proto.RegisterType((*Qmqh)(nil), "benchmark.Qmqh")
+	proto.RegisterType((*Attr2)(nil), "benchmark.Attr2")
+	proto.RegisterType((*Dobj)(nil), "benchmark.Dobj")
+	proto.RegisterType((*Attr3)(nil), "benchmark.Attr3")
+	proto.RegisterType((*Fltt)(nil), "benchmark.Fltt")
+	proto.RegisterType((*Attr4)(nil), "benchmark.Attr4")
+	proto.RegisterType((*Okhg)(nil), "benchmark.Okhg")
+	proto.RegisterType((*MaskHtml1)(nil), "benchmark.Mask_html1")
+	proto.RegisterType((*Data)(nil), "benchmark.Data")
 }
 
 func init() { proto.RegisterFile("benchmark.proto", fileDescriptor_17088f88d67e5b2d) }
 
 var fileDescriptor_17088f88d67e5b2d = []byte{
-	// 302 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0xcd, 0x4e, 0xf3, 0x40,
-	0x0c, 0xd4, 0xf6, 0x27, 0x4a, 0x5c, 0x7d, 0xea, 0xa7, 0xa5, 0xad, 0x22, 0x4e, 0x51, 0x4e, 0xe1,
-	0x52, 0xa4, 0x16, 0x89, 0x2b, 0x48, 0x45, 0x9c, 0x7a, 0xd9, 0x17, 0x40, 0xdb, 0xc6, 0x82, 0x88,
-	0x66, 0x13, 0x62, 0x07, 0xc1, 0x9d, 0x67, 0xe2, 0xf9, 0x50, 0x36, 0xbf, 0xf4, 0xc6, 0x6d, 0xed,
-	0x99, 0xb1, 0xc7, 0xf6, 0xc2, 0xfc, 0x80, 0xe6, 0xf8, 0x92, 0xea, 0xe2, 0x75, 0x9d, 0x17, 0x19,
-	0x67, 0xd2, 0xeb, 0x12, 0x61, 0x00, 0xb0, 0xd7, 0xb9, 0xc2, 0xb7, 0x12, 0x89, 0xa5, 0x84, 0x89,
-	0xd1, 0x29, 0xfa, 0x22, 0x10, 0x91, 0xa7, 0xec, 0x3b, 0xfc, 0x16, 0x30, 0xb3, 0x14, 0xca, 0x33,
-	0x43, 0x28, 0xb7, 0xb0, 0x8c, 0x91, 0x38, 0x31, 0x9a, 0x93, 0xcc, 0x3c, 0xe9, 0x38, 0x2e, 0x90,
-	0x08, 0xc9, 0x17, 0xc1, 0x38, 0xf2, 0xd4, 0x62, 0x00, 0xde, 0xb7, 0x98, 0xbc, 0x82, 0xff, 0x59,
-	0x91, 0x3c, 0x27, 0x43, 0xfe, 0xc8, 0xf2, 0xe7, 0x75, 0xbe, 0xa7, 0xae, 0xc0, 0x21, 0xd6, 0x5c,
-	0x92, 0x3f, 0xb1, 0x2e, 0x9a, 0x48, 0x5e, 0x83, 0x8b, 0x27, 0x4c, 0xd1, 0x30, 0xf9, 0xd3, 0x60,
-	0x1c, 0xcd, 0x36, 0x17, 0xeb, 0x7e, 0xb0, 0x87, 0x06, 0x52, 0x1d, 0x29, 0xbc, 0x01, 0x77, 0x97,
-	0x10, 0x6b, 0x73, 0xc4, 0x6a, 0x30, 0xc6, 0x0f, 0x6e, 0x07, 0xab, 0xde, 0x72, 0x01, 0xd3, 0x77,
-	0x7d, 0x2a, 0xd1, 0x1f, 0x05, 0x22, 0xfa, 0xa7, 0xea, 0xc0, 0xaa, 0xca, 0xc2, 0xda, 0xff, 0x83,
-	0xea, 0x4b, 0x80, 0xdb, 0x5a, 0xa8, 0x9c, 0xc6, 0x4d, 0x63, 0x2b, 0xfd, 0xed, 0xb4, 0xf5, 0xa4,
-	0x3a, 0x92, 0x15, 0x34, 0x3d, 0x6d, 0xd9, 0x33, 0x41, 0x03, 0xa9, 0x8e, 0x34, 0xd8, 0xd1, 0x78,
-	0xb8, 0xa3, 0xcd, 0x1d, 0x4c, 0x77, 0x65, 0x9a, 0x7e, 0xca, 0x5b, 0x70, 0x1e, 0x91, 0xf7, 0x3a,
-	0x97, 0xcb, 0x41, 0xa5, 0xfe, 0xd2, 0x97, 0xab, 0xf3, 0x74, 0x7d, 0xdd, 0x83, 0x63, 0x7f, 0xc8,
-	0xf6, 0x27, 0x00, 0x00, 0xff, 0xff, 0x03, 0xf5, 0xe7, 0xdf, 0x34, 0x02, 0x00, 0x00,
+	// 1673 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x58, 0x49, 0x77, 0x1b, 0xb9,
+	0x11, 0x7e, 0x1c, 0xad, 0x2c, 0x8a, 0x96, 0x0c, 0xcb, 0x1a, 0x58, 0xde, 0x64, 0x7a, 0x93, 0x27,
+	0x13, 0x7a, 0x24, 0x39, 0x99, 0x1c, 0x72, 0xd1, 0x8c, 0x66, 0x7b, 0x19, 0x3f, 0xdb, 0xed, 0x79,
+	0xb9, 0xf2, 0x41, 0x6c, 0x90, 0x84, 0xd9, 0x9b, 0x01, 0x50, 0x8e, 0xee, 0xb9, 0xe5, 0x92, 0x1f,
+	0x90, 0xdf, 0x91, 0x7f, 0x90, 0x3f, 0x91, 0x5f, 0x33, 0xaf, 0x0a, 0xe8, 0x85, 0x94, 0xd8, 0xb4,
+	0x7c, 0xf0, 0x0d, 0x55, 0xf5, 0xa1, 0x51, 0x0b, 0x0a, 0xf8, 0x1a, 0xb0, 0x79, 0x2a, 0x93, 0xfe,
+	0x28, 0x16, 0x7a, 0xdc, 0xcd, 0x74, 0x6a, 0x53, 0xd6, 0x2c, 0x14, 0xbb, 0xb7, 0x86, 0x69, 0x3a,
+	0x8c, 0xe4, 0x73, 0x32, 0x9c, 0x4e, 0x06, 0xcf, 0x45, 0x72, 0xee, 0x50, 0x9d, 0x3d, 0x80, 0x97,
+	0x22, 0x0b, 0xe4, 0xfb, 0x89, 0x34, 0x96, 0x31, 0x58, 0x4e, 0x44, 0x2c, 0x79, 0x63, 0xaf, 0xb1,
+	0xdf, 0x0c, 0x68, 0xdc, 0xf9, 0x6f, 0x03, 0x5a, 0x04, 0x31, 0x59, 0x9a, 0x18, 0xc9, 0x8e, 0xe0,
+	0x66, 0x28, 0x8d, 0x55, 0x89, 0xb0, 0x2a, 0x4d, 0x7a, 0x22, 0x0c, 0xb5, 0x34, 0x46, 0x1a, 0xde,
+	0xd8, 0x5b, 0xda, 0x6f, 0x06, 0xdb, 0x15, 0xe3, 0x71, 0x6e, 0x63, 0xcf, 0x60, 0x2b, 0xd5, 0x6a,
+	0xa8, 0xaa, 0xf8, 0x2f, 0x08, 0xbf, 0xe9, 0xf4, 0x25, 0x74, 0x07, 0x56, 0x8d, 0x15, 0x76, 0x62,
+	0xf8, 0x32, 0x79, 0xe1, 0x25, 0xf6, 0x1c, 0xd6, 0x65, 0x24, 0x63, 0x99, 0x58, 0xc3, 0x57, 0xf6,
+	0x96, 0xf6, 0x5b, 0x87, 0x37, 0xba, 0x65, 0xcc, 0x3f, 0x78, 0x53, 0x50, 0x80, 0x3a, 0x2f, 0x60,
+	0xfd, 0x44, 0x19, 0x2b, 0x92, 0xbe, 0xc4, 0xc0, 0xac, 0xfc, 0x87, 0xcd, 0x03, 0xc3, 0x31, 0xdb,
+	0x86, 0x95, 0x33, 0x11, 0x4d, 0x24, 0xff, 0x62, 0xaf, 0xb1, 0xdf, 0x0e, 0x9c, 0x40, 0xb3, 0x26,
+	0x9a, 0xdc, 0xbf, 0xc2, 0xac, 0x7f, 0x36, 0x60, 0x3d, 0x77, 0x01, 0x3d, 0x0d, 0xfd, 0xc2, 0x34,
+	0x75, 0xda, 0xd3, 0xdc, 0xa7, 0xa0, 0x00, 0xd1, 0x04, 0xbf, 0x26, 0x7d, 0x76, 0x66, 0x82, 0x37,
+	0x05, 0x05, 0xa8, 0x92, 0xa3, 0xa5, 0x6a, 0x8e, 0x3a, 0x4f, 0xe1, 0xfa, 0x5b, 0xab, 0xa5, 0x88,
+	0x5f, 0xa7, 0xc6, 0xd6, 0x15, 0xf5, 0x2d, 0xb0, 0x2a, 0xd0, 0x97, 0x96, 0xc3, 0x5a, 0x2c, 0x8d,
+	0x11, 0xc3, 0x1c, 0x9c, 0x8b, 0xec, 0x21, 0x2c, 0x87, 0xc2, 0x0a, 0xaa, 0x59, 0xeb, 0x70, 0xb3,
+	0xea, 0x9d, 0xb0, 0x22, 0x20, 0x63, 0xe7, 0xdf, 0x0d, 0x80, 0x1f, 0x92, 0xa1, 0x18, 0x52, 0x1e,
+	0x70, 0xdd, 0x48, 0x8d, 0xdd, 0xa7, 0xda, 0x01, 0x8d, 0x31, 0x7b, 0x5a, 0x66, 0xd1, 0x79, 0x9e,
+	0x3d, 0x12, 0x50, 0x6b, 0x46, 0x42, 0x4b, 0x8a, 0xa6, 0x1d, 0x38, 0x81, 0x3d, 0x80, 0x8d, 0x4c,
+	0xa7, 0x03, 0x15, 0xc9, 0xde, 0x99, 0x92, 0x1f, 0x68, 0x3b, 0xb4, 0x83, 0x96, 0xd7, 0xfd, 0x5d,
+	0xc9, 0x0f, 0xec, 0x3e, 0xb4, 0x62, 0x19, 0x2a, 0xd1, 0xeb, 0x47, 0xaa, 0x3f, 0xe6, 0x2b, 0x84,
+	0x00, 0x52, 0x7d, 0x8f, 0x9a, 0xce, 0x29, 0x34, 0x8f, 0x13, 0x11, 0x9d, 0x5b, 0xd5, 0x37, 0xec,
+	0x1e, 0x80, 0x8a, 0x33, 0xdc, 0x66, 0x98, 0x68, 0xe7, 0x56, 0x45, 0xc3, 0xfe, 0x04, 0x20, 0x0b,
+	0xf7, 0x7d, 0x21, 0x6e, 0x56, 0xf7, 0x58, 0x61, 0x0c, 0x2a, 0xc0, 0x4e, 0x0b, 0x9a, 0x2f, 0x85,
+	0x19, 0xf7, 0x46, 0x36, 0x8e, 0x3a, 0xff, 0x6f, 0x01, 0xfc, 0x2a, 0x8c, 0xed, 0xb9, 0xc8, 0x76,
+	0x60, 0x35, 0x4b, 0x8d, 0x55, 0xa1, 0x5f, 0xce, 0x4b, 0xa8, 0x17, 0x67, 0xc2, 0x0a, 0x4d, 0xcb,
+	0x34, 0x03, 0x2f, 0x61, 0x05, 0xfa, 0x69, 0x62, 0x71, 0x7d, 0x57, 0xd9, 0x5c, 0xc4, 0x0e, 0xf2,
+	0xc3, 0x9e, 0xeb, 0x18, 0x11, 0xf9, 0x06, 0xd9, 0xf4, 0xfa, 0x57, 0x5e, 0x4d, 0x1f, 0xd1, 0x52,
+	0x58, 0x19, 0x52, 0x46, 0xf0, 0x23, 0x4e, 0x64, 0x4f, 0x61, 0xd3, 0x0f, 0x7b, 0xa1, 0x32, 0x59,
+	0x24, 0xce, 0xf9, 0x2a, 0x21, 0xae, 0x79, 0xf5, 0x89, 0xd3, 0xb2, 0x5d, 0x58, 0x9f, 0x18, 0xa9,
+	0x69, 0xdf, 0xac, 0x11, 0xa2, 0x90, 0xd1, 0x36, 0x98, 0x44, 0x11, 0xd9, 0xd6, 0x9d, 0x2d, 0x97,
+	0xd9, 0x37, 0xb0, 0x6e, 0x95, 0x8d, 0xe4, 0x44, 0x47, 0xbc, 0x49, 0x09, 0xdc, 0xee, 0xba, 0xc3,
+	0xa7, 0x9b, 0x1f, 0x3e, 0xdd, 0xe3, 0xe4, 0x3c, 0x28, 0x50, 0xec, 0x2b, 0x58, 0xa1, 0x31, 0x87,
+	0x1a, 0xb8, 0x83, 0xe0, 0xca, 0xe9, 0x60, 0xa0, 0xfa, 0x4a, 0x44, 0xbc, 0x45, 0xf9, 0x2c, 0x64,
+	0xdc, 0x43, 0xca, 0x64, 0x3a, 0xe5, 0x1b, 0x6e, 0x0f, 0x91, 0x80, 0x33, 0x94, 0xc9, 0x54, 0x92,
+	0xc8, 0x90, 0xb7, 0xdd, 0x8c, 0x5c, 0x46, 0x9b, 0xd5, 0x32, 0x09, 0x55, 0x32, 0xe4, 0xd7, 0x9c,
+	0x2d, 0x97, 0x31, 0x85, 0x58, 0x40, 0x25, 0x0d, 0xdf, 0x74, 0x29, 0xf4, 0x22, 0xae, 0x83, 0x3b,
+	0xd9, 0xf0, 0x2d, 0xb7, 0x0e, 0x09, 0xf8, 0xad, 0x50, 0x19, 0x67, 0xb8, 0xee, 0xbe, 0x95, 0xcb,
+	0x68, 0xd3, 0x12, 0xeb, 0x2e, 0x43, 0xce, 0x9c, 0x2d, 0x97, 0xd9, 0x5f, 0x60, 0x23, 0x1f, 0x0f,
+	0x74, 0x1a, 0xf3, 0x1b, 0x35, 0x49, 0x98, 0x42, 0xe6, 0x7e, 0x84, 0x7c, 0xbb, 0xf4, 0x83, 0xf6,
+	0x15, 0x0e, 0xb4, 0xe1, 0x37, 0xdd, 0xbe, 0x72, 0x12, 0x75, 0x98, 0x38, 0x93, 0x21, 0xdf, 0xf1,
+	0x1d, 0x86, 0x02, 0xfb, 0x1a, 0x56, 0x55, 0x2c, 0x86, 0xd2, 0xf0, 0x2f, 0xa9, 0xaf, 0x2f, 0x5f,
+	0xd7, 0x63, 0xd8, 0x0b, 0x00, 0x61, 0xad, 0xe8, 0x8f, 0xa8, 0x3d, 0x78, 0xcd, 0x8c, 0x0a, 0x8e,
+	0x3d, 0x84, 0x76, 0x26, 0x34, 0x6e, 0x5b, 0xdf, 0x08, 0xb7, 0xc8, 0x83, 0x0d, 0xa7, 0x7c, 0xed,
+	0xda, 0xa1, 0x4c, 0x5f, 0xc8, 0x77, 0xa7, 0xd2, 0x47, 0x21, 0x0d, 0xd2, 0x28, 0x4a, 0x3f, 0xf0,
+	0xdb, 0xae, 0x85, 0x9c, 0x84, 0x7b, 0x39, 0x91, 0x1f, 0xcc, 0x40, 0xca, 0xb0, 0x67, 0xd2, 0x89,
+	0xee, 0x4b, 0x7e, 0xc7, 0xed, 0xe5, 0x5c, 0xfd, 0x96, 0xb4, 0xec, 0x31, 0x14, 0x9a, 0x5e, 0x24,
+	0x4e, 0x65, 0xc4, 0xef, 0x12, 0xae, 0x9d, 0x6b, 0x7f, 0x45, 0x25, 0x1e, 0x37, 0x05, 0x4c, 0xc5,
+	0x43, 0x7e, 0x8f, 0x40, 0xad, 0x5c, 0xf7, 0x4b, 0x3c, 0x64, 0x7f, 0x86, 0x56, 0xa4, 0x92, 0x71,
+	0xa6, 0x25, 0x1d, 0x48, 0xf7, 0x6b, 0x8a, 0x55, 0x05, 0x62, 0xe6, 0xac, 0x16, 0xa1, 0x74, 0x87,
+	0xdc, 0x5e, 0xcd, 0xb4, 0x0a, 0x0e, 0x0f, 0x37, 0x9b, 0x5a, 0x11, 0xf5, 0xdc, 0xb4, 0x07, 0xe4,
+	0x0f, 0x90, 0xea, 0x2d, 0x01, 0xbe, 0x85, 0x0d, 0x2b, 0xf4, 0x50, 0xda, 0x5e, 0xa6, 0x55, 0x5f,
+	0xf2, 0x4e, 0x4d, 0x49, 0x5a, 0x0e, 0xf9, 0x1a, 0x81, 0xac, 0x8b, 0xa7, 0xcc, 0x24, 0xb1, 0xfa,
+	0x9c, 0x3f, 0xac, 0x71, 0x26, 0x07, 0xb1, 0xbf, 0xc2, 0x66, 0x54, 0x9c, 0x69, 0xbd, 0x50, 0x58,
+	0xc9, 0x1f, 0xd5, 0xcc, 0x6b, 0x23, 0x38, 0x40, 0xec, 0x89, 0xb0, 0x12, 0x0b, 0xa8, 0x0c, 0xa6,
+	0x91, 0x3f, 0x76, 0x05, 0x74, 0x92, 0xeb, 0x4d, 0xdc, 0xd3, 0xda, 0xf2, 0x27, 0x79, 0x6f, 0x3a,
+	0x19, 0x77, 0xa6, 0x4d, 0x33, 0xd5, 0x37, 0xfc, 0x69, 0xdd, 0xce, 0x74, 0x18, 0x76, 0x04, 0x50,
+	0xfa, 0xc7, 0xf7, 0x6b, 0x5c, 0x6b, 0x16, 0xae, 0xb1, 0x03, 0x68, 0xc6, 0xf9, 0xb1, 0xcd, 0x9f,
+	0xf9, 0x39, 0xe5, 0x61, 0x5f, 0x1c, 0xe9, 0xc1, 0x3a, 0xc2, 0x7e, 0xc6, 0xc3, 0x7d, 0x0c, 0xcb,
+	0xc7, 0xd6, 0x6a, 0xec, 0xa6, 0x7e, 0x24, 0x8c, 0xf1, 0xb7, 0xa4, 0x13, 0x70, 0x03, 0xe1, 0x35,
+	0xd8, 0xeb, 0xa7, 0x71, 0x26, 0x92, 0x73, 0x7f, 0xb2, 0xb7, 0x50, 0xf7, 0xbd, 0x53, 0xe1, 0x95,
+	0x38, 0xd2, 0x72, 0xe0, 0xcf, 0x76, 0x1a, 0x63, 0x7a, 0x5c, 0x6d, 0x72, 0xbe, 0xe3, 0xa4, 0xce,
+	0x1b, 0x58, 0xfe, 0xdb, 0xa9, 0x8d, 0xd9, 0x16, 0x2c, 0x59, 0x31, 0xf4, 0x4b, 0xe1, 0x10, 0x2f,
+	0x63, 0x61, 0xad, 0xf6, 0x37, 0x54, 0xf5, 0x32, 0x46, 0xef, 0x02, 0x32, 0x16, 0xdc, 0x65, 0xa9,
+	0xe4, 0x2e, 0x9d, 0x08, 0x56, 0x10, 0x71, 0xf0, 0x79, 0x02, 0x08, 0x60, 0xf9, 0x4d, 0xfc, 0x7e,
+	0x74, 0x49, 0x00, 0x8f, 0xa6, 0x02, 0xd8, 0x9a, 0x09, 0xe0, 0x60, 0x71, 0x04, 0x87, 0x9f, 0x2d,
+	0x82, 0x93, 0xf4, 0xf4, 0xdd, 0x95, 0x23, 0x38, 0x5c, 0x1c, 0xc1, 0xd1, 0x67, 0x8b, 0xe0, 0xc7,
+	0xc8, 0xda, 0x2b, 0x47, 0x70, 0xb4, 0x38, 0x82, 0x17, 0x9f, 0x2d, 0x82, 0x57, 0xe3, 0xd1, 0xf0,
+	0xca, 0x11, 0xbc, 0xa8, 0x89, 0xe0, 0x7f, 0x0d, 0xfc, 0xeb, 0xf1, 0xfd, 0x7d, 0x80, 0xfd, 0x34,
+	0xfe, 0xce, 0xc6, 0x9e, 0xab, 0x57, 0xfb, 0x09, 0x1b, 0x30, 0x20, 0x23, 0x82, 0xde, 0xc4, 0x6f,
+	0x46, 0x97, 0x34, 0x1d, 0x6e, 0xf2, 0x80, 0x8c, 0x08, 0x3a, 0x79, 0xf5, 0xdd, 0x3b, 0x5a, 0x6c,
+	0x86, 0x26, 0xa7, 0xa7, 0xef, 0x02, 0x32, 0x22, 0xe8, 0xc7, 0xe8, 0xb7, 0xdf, 0x28, 0xce, 0x69,
+	0x10, 0x96, 0x2a, 0x20, 0x23, 0x82, 0xd2, 0xf1, 0xcf, 0x3f, 0x11, 0x81, 0x9b, 0x06, 0x61, 0x36,
+	0x02, 0x32, 0x76, 0xfe, 0xd3, 0x86, 0x65, 0xe4, 0xdf, 0x73, 0x69, 0xe6, 0x6e, 0x85, 0x8e, 0xb9,
+	0x3a, 0x94, 0xc4, 0x6b, 0x3b, 0x27, 0x5e, 0x2e, 0x33, 0x9e, 0x62, 0x55, 0x08, 0xe8, 0xf2, 0x62,
+	0x02, 0xba, 0xb2, 0x90, 0x80, 0xae, 0x2e, 0x24, 0xa0, 0x6b, 0x97, 0x12, 0x50, 0x0e, 0x6b, 0x93,
+	0x2c, 0xa4, 0x4f, 0x38, 0x8e, 0x99, 0x8b, 0x18, 0x2b, 0x52, 0x51, 0x15, 0x12, 0xc1, 0x6c, 0x07,
+	0x5e, 0x62, 0xb7, 0xa1, 0xa9, 0x4c, 0x4f, 0x4c, 0xec, 0x28, 0xd5, 0x44, 0x26, 0xe9, 0x3e, 0x39,
+	0x26, 0x79, 0x8a, 0xcf, 0xb6, 0x6a, 0xf8, 0xec, 0xc6, 0x0c, 0x9f, 0x2d, 0x79, 0x7a, 0x7b, 0x8a,
+	0xa7, 0x57, 0x99, 0xe8, 0xb5, 0x19, 0x26, 0x7a, 0x1b, 0x9a, 0xf8, 0x6d, 0xbc, 0x94, 0xcf, 0x88,
+	0x3d, 0xb6, 0xdd, 0x62, 0xaf, 0xb5, 0x3a, 0x2b, 0x69, 0xea, 0xd6, 0x3c, 0x9a, 0x7a, 0xbd, 0x86,
+	0xa6, 0xb2, 0xf9, 0x34, 0xf5, 0xc6, 0x34, 0x4d, 0xe5, 0xb0, 0x96, 0xa4, 0xee, 0x3e, 0x74, 0x04,
+	0x31, 0x17, 0x4b, 0x02, 0x7b, 0x73, 0x1e, 0x81, 0xdd, 0xa9, 0x21, 0xb0, 0x5f, 0x2e, 0x20, 0xb0,
+	0xfc, 0xea, 0x04, 0xf6, 0xd6, 0xe5, 0x04, 0x76, 0xf7, 0x72, 0x02, 0x7b, 0xbb, 0x4a, 0x60, 0x77,
+	0x0a, 0x02, 0x7b, 0x87, 0x1e, 0x13, 0x72, 0xaa, 0xda, 0x85, 0xb5, 0x2c, 0x8d, 0x22, 0x4c, 0xd9,
+	0xdd, 0x1a, 0xfe, 0x90, 0x83, 0x66, 0xa8, 0xed, 0xbd, 0x4f, 0xa5, 0xb6, 0xf7, 0x17, 0x50, 0xdb,
+	0xbd, 0xb9, 0xd4, 0xf6, 0xc1, 0x14, 0xb5, 0xed, 0x52, 0x59, 0x53, 0x6d, 0x4d, 0x2d, 0xa7, 0xcb,
+	0x41, 0x97, 0x51, 0xe1, 0x87, 0x1f, 0x49, 0x85, 0x1f, 0x7d, 0x0c, 0x15, 0x7e, 0xbc, 0x90, 0x0a,
+	0x3f, 0xf9, 0x34, 0x2a, 0xfc, 0xf4, 0xd3, 0xa8, 0xf0, 0xfe, 0x42, 0x2a, 0xfc, 0xec, 0x63, 0xa9,
+	0xf0, 0x21, 0x34, 0x45, 0xfe, 0x40, 0xc0, 0xbf, 0xba, 0xc0, 0x02, 0x8b, 0xc7, 0x83, 0xa0, 0x84,
+	0x55, 0xe9, 0xf3, 0x1f, 0x3e, 0x86, 0x3e, 0x3f, 0xb9, 0x48, 0x9f, 0xbf, 0xa6, 0x7a, 0xcf, 0x25,
+	0xca, 0x7f, 0x9c, 0x4b, 0x94, 0xbb, 0x33, 0x44, 0x79, 0xa7, 0x20, 0xca, 0xcf, 0x5d, 0x07, 0x78,
+	0x4a, 0xcc, 0x61, 0x4d, 0x99, 0xfe, 0x48, 0x68, 0xcb, 0xbf, 0x71, 0xfd, 0xef, 0x45, 0xac, 0x40,
+	0x85, 0x2c, 0x1f, 0x5c, 0x78, 0xe5, 0x28, 0x5f, 0x2f, 0xaa, 0x6c, 0xf9, 0xb0, 0xca, 0x96, 0x0f,
+	0x2f, 0x4c, 0x2a, 0x6f, 0xd3, 0x92, 0x2e, 0x1f, 0xfe, 0xab, 0x01, 0x2b, 0x27, 0x93, 0x38, 0x3e,
+	0x67, 0xdf, 0xc2, 0xea, 0x4f, 0xd2, 0xbe, 0x14, 0x19, 0x9b, 0x9e, 0x94, 0x3f, 0x3c, 0xee, 0xee,
+	0xcc, 0xaa, 0xfd, 0x8b, 0xd4, 0x2f, 0x00, 0xe5, 0x3b, 0x15, 0xbb, 0x53, 0x41, 0x5d, 0x78, 0xe7,
+	0xda, 0xbd, 0x3b, 0xc7, 0xea, 0x3e, 0x75, 0xba, 0x4a, 0xc5, 0x39, 0xfa, 0x3d, 0x00, 0x00, 0xff,
+	0xff, 0xf7, 0xa8, 0xa3, 0xb5, 0x29, 0x15, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -321,6 +2112,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DummyClient interface {
 	GetMap(ctx context.Context, in *MapRequest, opts ...grpc.CallOption) (*MapResponse, error)
+	StreamPost(ctx context.Context, in *StreamPostRequest, opts ...grpc.CallOption) (*StreamPostResponse, error)
 }
 
 type dummyClient struct {
@@ -340,9 +2132,19 @@ func (c *dummyClient) GetMap(ctx context.Context, in *MapRequest, opts ...grpc.C
 	return out, nil
 }
 
+func (c *dummyClient) StreamPost(ctx context.Context, in *StreamPostRequest, opts ...grpc.CallOption) (*StreamPostResponse, error) {
+	out := new(StreamPostResponse)
+	err := c.cc.Invoke(ctx, "/benchmark.Dummy/StreamPost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DummyServer is the server API for Dummy service.
 type DummyServer interface {
 	GetMap(context.Context, *MapRequest) (*MapResponse, error)
+	StreamPost(context.Context, *StreamPostRequest) (*StreamPostResponse, error)
 }
 
 // UnimplementedDummyServer can be embedded to have forward compatible implementations.
@@ -351,6 +2153,9 @@ type UnimplementedDummyServer struct {
 
 func (*UnimplementedDummyServer) GetMap(ctx context.Context, req *MapRequest) (*MapResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMap not implemented")
+}
+func (*UnimplementedDummyServer) StreamPost(ctx context.Context, req *StreamPostRequest) (*StreamPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StreamPost not implemented")
 }
 
 func RegisterDummyServer(s *grpc.Server, srv DummyServer) {
@@ -375,6 +2180,24 @@ func _Dummy_GetMap_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Dummy_StreamPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StreamPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DummyServer).StreamPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/benchmark.Dummy/StreamPost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DummyServer).StreamPost(ctx, req.(*StreamPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Dummy_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "benchmark.Dummy",
 	HandlerType: (*DummyServer)(nil),
@@ -382,6 +2205,10 @@ var _Dummy_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetMap",
 			Handler:    _Dummy_GetMap_Handler,
+		},
+		{
+			MethodName: "StreamPost",
+			Handler:    _Dummy_StreamPost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

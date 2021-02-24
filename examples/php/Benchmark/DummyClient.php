@@ -30,4 +30,18 @@ class DummyClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \Benchmark\StreamPostRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function StreamPost(\Benchmark\StreamPostRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/benchmark.Dummy/StreamPost',
+        $argument,
+        ['\Benchmark\StreamPostResponse', 'decode'],
+        $metadata, $options);
+    }
+
 }

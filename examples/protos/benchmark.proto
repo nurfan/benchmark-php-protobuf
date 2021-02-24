@@ -2,8 +2,11 @@ syntax = "proto3";
 
 package benchmark;
 
+import "google/protobuf/any.proto";
+
 service Dummy{
     rpc GetMap (MapRequest) returns (MapResponse);
+    rpc StreamPost (StreamPostRequest) returns (StreamPostResponse);
 }
 
 message MapRequest {
@@ -31,4 +34,199 @@ message Elements {
     Distance distance = 1;
     Duration duration = 2;
     string status = 3;
+}
+
+message StreamPostRequest {
+    string name = 1;
+}
+
+message StreamPostResponse {
+    string message = 1;
+    repeated Data data = 2;
+}
+
+message Engagement {
+    uint32 like = 1;
+    uint32 reply = 2;
+    uint32 share = 3;
+    uint32 profile_view = 4;
+    uint32 media_click = 5;
+}
+
+message Analytics {
+    uint32 impression = 1;
+    Engagement engagement = 2;
+}
+
+message Mask_html {
+}
+
+message Last_reply {
+    uint32 postid = 1;
+    string avatar = 2;
+    string content = 3;
+    string content_original = 4;
+    string created = 5;
+    string created_display = 6;
+    string username = 7;
+    string fullname = 8;
+    google.protobuf.Any titleurl = 9;
+    google.protobuf.Any title = 10;
+    uint32 official = 11;
+    uint32 ispro = 12;
+    uint32 ispinned = 13;
+    uint32 trending = 14;
+    string replies = 15;
+    uint32 likes = 16;
+    uint32 dislikes = 17;
+    uint32 reposted = 18;
+    google.protobuf.Any repostedfrom = 19;
+    uint32 liked = 20;
+    string likers = 21;
+    uint32 saved = 22;
+    repeated google.protobuf.Any images = 23;
+    repeated google.protobuf.Any attachment = 24;
+    uint32 parent_postid = 25;
+    uint32 disliked = 26;
+    uint32 follow = 27;
+    string newsfeed_source = 28;
+    string newsfeed_label = 29;
+    string newsfeed_img = 30;
+    google.protobuf.Any linkpreview = 31;
+    google.protobuf.Any tradeshare = 32;
+    string total_share = 33;
+    repeated google.protobuf.Any target_price = 34;
+    google.protobuf.Any country = 35;
+    google.protobuf.Any last_reply_date = 36;
+    uint32 isnews = 37;
+    uint32 isreport = 38;
+    repeated google.protobuf.Any topics = 39;
+    google.protobuf.Any last_reply = 40;
+    Mask_html mask_html = 41;
+}
+
+message Attr {
+    string class = 1;
+    string data_company = 2;
+    string href = 3;
+    string target = 4;
+}
+
+message Kbtm {
+    string tag = 1;
+    Attr attr = 2;
+    string text = 3;
+}
+
+message Attr1 {
+    string class = 1;
+    string data_company = 2;
+    string href = 3;
+    string target = 4;
+}
+
+message Qmqh {
+    string tag = 1;
+    Attr1 attr = 2;
+    string text = 3;
+}
+
+message Attr2 {
+    string class = 1;
+    string data_company = 2;
+    string href = 3;
+    string target = 4;
+}
+
+message Dobj {
+    string tag = 1;
+    Attr2 attr = 2;
+    string text = 3;
+}
+
+message Attr3 {
+    string class = 1;
+    string data_company = 2;
+    string href = 3;
+    string target = 4;
+}
+
+message Fltt {
+    string tag = 1;
+    Attr3 attr = 2;
+    string text = 3;
+}
+
+message Attr4 {
+    string class = 1;
+    string data_company = 2;
+    string href = 3;
+    string target = 4;
+}
+
+message Okhg {
+    string tag = 1;
+    Attr4 attr = 2;
+    string text = 3;
+}
+
+message Mask_html1 {
+    Kbtm kBtm = 1;
+    Qmqh QmQh = 2;
+    Dobj DOBj = 3;
+    Fltt FlTT = 4;
+    Okhg okHG = 5;
+}
+
+message Data {
+    uint32 postid = 1;
+    string titleurl = 2;
+    string title = 3;
+    string content = 4;
+    string content_original = 5;
+    string created = 6;
+    string created_display = 7;
+    string updated = 8;
+    uint32 userid = 9;
+    uint32 is_author = 10;
+    string username = 11;
+    string fullname = 12;
+    string avatar = 13;
+    uint32 official = 14;
+    uint32 user_priv = 15;
+    uint32 ispro = 16;
+    uint32 ispinned = 17;
+    uint32 trending = 18;
+    string replies = 19;
+    uint32 noreply = 20;
+    uint32 likes = 21;
+    uint32 dislikes = 22;
+    uint32 reposted = 23;
+    google.protobuf.Any repostedfrom = 24;
+    uint32 liked = 25;
+    string likers = 26;
+    uint32 saved = 27;
+    repeated string images = 28;
+    repeated google.protobuf.Any polling = 29;
+    repeated google.protobuf.Any attachment = 30;
+    uint32 parent_postid = 31;
+    uint32 disliked = 32;
+    uint32 follow = 33;
+    repeated google.protobuf.Any reports = 34;
+    string newsfeed_source = 35;
+    string newsfeed_label = 36;
+    string newsfeed_img = 37;
+    google.protobuf.Any linkpreview = 38;
+    google.protobuf.Any tradeshare = 39;
+    string total_share = 40;
+    repeated google.protobuf.Any target_price = 41;
+    Analytics analytics = 42;
+    google.protobuf.Any country = 43;
+    uint32 last_reply_date = 44;
+    uint32 isnews = 45;
+    uint32 isreport = 46;
+    repeated string topics = 47;
+    uint32 ischart = 48;
+    Last_reply last_reply = 49;
+    Mask_html1 mask_html = 50;
 }
